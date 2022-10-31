@@ -1,4 +1,4 @@
-import { validateEmail, addClass, removeClass } from '../util.js';
+import { validateEmail, getDataFromIGroup, errorValidation, successfulValidation, session } from '../util.js';
 
 const igroupEmail = document.querySelector('[data-igroup="email"]');
 const igroupName = document.querySelector('[data-igroup="name"]');
@@ -11,49 +11,32 @@ const items = [igroupEmail, igroupName, igroupSurname, igroupPassword, igroupCon
 
 main();
 
-function main() {
-  button.addEventListener('click', validation);
-}
+async function main() {
+  const user = await session();
 
-function errorValidation(elems, className = 'is-invalid', flag = true) {
-  if (flag) {
-    flag = false;
+  if (user) {
+    return (document.location = '/profile.html');
   }
 
-  elems.forEach((el) => addClass(el, className));
-
-  return flag;
-}
-
-function successfulValidation(elems, className = 'is-valid') {
-  elems.forEach((el) => removeClass(el, className));
-}
-
-function getDataFromIGroup(item) {
-  const field = item.dataset.igroup;
-  const input = item.querySelector('input');
-  const wrapper = item.querySelector('div');
-
-  return { field, input, wrapper };
+  button.addEventListener('click', validation);
 }
 
 function validation() {
   let isAllValid = true;
-  const result = {};
+  const data = {};
 
   for (const item of items) {
     const { field, input, wrapper } = getDataFromIGroup(item);
 
     if (
       input.value === '' ||
-      (item.dataset.igroup === 'email' && !validateEmail(input.value)) ||
-      (item.dataset.igroup === 'password' && input.value.length < 3) ||
-      (item.dataset.igroup === 'confirmPassword' && input.lenght !== igroupPassword.querySelector('input').lenght)
+      (field === 'email' && !validateEmail(input.value)) ||
+      (field === 'password' && input.value.length < 3) ||
+      (field === 'confirmPassword' && input.lenght !== igroupPassword.querySelector('input').lenght)
     ) {
-      isAllValid = errorValidation([input, wrapper], 'is-invalid', isAllValid);
+      isAllValid = errorValidation([input, wrapper], isAllValid);
     } else {
-      successfulValidation([input, wrapper], 'is-invalid');
-      addClass(input, 'is-valid');
+      successfulValidation([input, wrapper]);
 
       if (field !== 'confirmPassword') result[field] = input.value;
     }
@@ -97,7 +80,7 @@ async function registration({ result }) {
     const text = await res.text();
     throw Error(text);
   } catch (err) {
-    console.log({ err });
+    console.error({ err });
     alert(err.message);
   }
 }
