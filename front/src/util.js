@@ -55,3 +55,19 @@ export async function session(unauthenticatedCallback = () => {}) {
     console.error({ err });
   }
 }
+
+export async function getProfile(userId) {
+  try {
+    const res = await fetch(`api/user/${userId}`);
+
+    if (res.ok) {
+      const data = await res.json();
+      return data;
+    }
+
+    return null;
+  } catch (error) {
+    console.error({ error });
+    return null;
+  }
+}
