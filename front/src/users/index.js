@@ -1,3 +1,5 @@
+import '../initExit.js';
+
 const usersListDiv = document.querySelector('[data-segment="usersList"]');
 
 main();
