@@ -8,12 +8,24 @@ export function validateEmail(email) {
   return emailRegex.test(email);
 }
 
-export function addClass(elem, className) {
-  return elem.classList.add(className);
+export function addClass(elems, className) {
+  if (Array.isArray(elems)) {
+    elems.forEach((elem) => elem.classList.add(className));
+    return;
+  }
+
+  elems.classList.add(className);
+  return;
 }
 
-export function removeClass(elem, className) {
-  return elem.classList.remove(className);
+export function removeClass(elems, className) {
+  if (Array.isArray(elems)) {
+    elems.forEach((elem) => elem.classList.remove(className));
+    return;
+  }
+
+  elems.classList.remove(className);
+  return;
 }
 
 export function errorValidation(elems, flag = true) {

@@ -1,4 +1,4 @@
-import { session, getProfile } from './util.js';
+import { session, getProfile, removeClass, addClass } from './util.js';
 
 const menu = document.querySelector('[data-segment="menu"]');
 
@@ -16,7 +16,7 @@ async function main() {
       return;
     }
 
-    menu.classList.remove('invisible');
+    removeClass(menu, 'invisible');
     initMenu(user);
   } catch (error) {
     console.error({ error });
@@ -27,7 +27,7 @@ async function initMenu(user) {
   const menuItems = document.querySelectorAll('[data-menuitem]');
 
   for (const menuItem of menuItems) {
-    menuItem.classList.remove('active');
+    removeClass(menuItem, 'active');
   }
 
   const params = new URLSearchParams(location.search);
@@ -42,7 +42,7 @@ async function initMenu(user) {
 
   for (const menuItem of menuItems) {
     if (location.pathname.includes(menuItem.dataset.menuitem)) {
-      menuItem.classList.add('active');
+      addClass(menuItem, 'active');
     }
   }
 }

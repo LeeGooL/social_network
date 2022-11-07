@@ -1,4 +1,11 @@
-import { errorValidation, getDataFromIGroup, session, successfulValidation, validateEmail } from '../util.js';
+import {
+  errorValidation,
+  getDataFromIGroup,
+  removeClass,
+  session,
+  successfulValidation,
+  validateEmail,
+} from '../util.js';
 
 const emailIGroup = document.querySelector('[data-igroup="email"]');
 const passwordIGroup = document.querySelector('[data-igroup="password"]');
@@ -44,8 +51,7 @@ async function enter({ data }) {
   for (const item of items) {
     const { field, input, wrapper } = getDataFromIGroup(item);
 
-    input.classList.remove('is-valid');
-    wrapper.classList.remove('is-valid');
+    removeClass([input, wrapper], 'is-valid');
 
     if (field === 'password') {
       input.value = '';
