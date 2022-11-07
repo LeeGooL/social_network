@@ -1,4 +1,4 @@
-import { session } from './util.js';
+import { removeClass, session } from './util.js';
 
 const signOutButton = document.querySelector('[data-action="signout"]');
 
@@ -8,7 +8,7 @@ async function main() {
   const user = await session();
 
   if (user != null) {
-    signOutButton.classList.remove('d-none');
+    removeClass(signOutButton, 'd-none');
     signOutButton.addEventListener('click', signout);
   }
 }

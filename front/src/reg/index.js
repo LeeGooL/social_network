@@ -1,4 +1,11 @@
-import { validateEmail, getDataFromIGroup, errorValidation, successfulValidation, session } from '../util.js';
+import {
+  validateEmail,
+  getDataFromIGroup,
+  errorValidation,
+  successfulValidation,
+  session,
+  removeClass,
+} from '../util.js';
 
 const igroupEmail = document.querySelector('[data-igroup="email"]');
 const igroupName = document.querySelector('[data-igroup="name"]');
@@ -54,8 +61,7 @@ async function registration({ result }) {
 
     console.log({ field, input, wrapper });
 
-    input.classList.remove('is-valid');
-    wrapper.classList.remove('is-valid');
+    removeClass([input, wrapper], 'is-valid');
 
     if (field === 'password' || field === 'confirmPassword') {
       input.value = '';

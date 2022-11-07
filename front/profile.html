@@ -43,7 +43,9 @@
               >
               </span
             ></a>
-            <a href="/setting.html" class="list-group-item list-group-item-action" data-menuitem="settings">Настройки</a>
+            <a href="/setting.html" class="list-group-item list-group-item-action" data-menuitem="settings"
+              >Настройки</a
+            >
           </div>
         </div>
         <!-- Menu -->
@@ -53,21 +55,21 @@
           <!-- Портфолио -->
           <div class="row mb-3">
             <div class="col-4 portfolio-avatar">
-              <img src="/sets/avatar.png" alt="" />
+              <img alt="" data-field="avatar" />
             </div>
             <div class="col-8">
-              <h3>Алексей Данчин</h3>
+              <h3 data-field="name"></h3>
               <p class="text-muted">
-                <small>Тут будет мой статус</small>
+                <small data-field="status"></small>
               </p>
 
-              <button class="btn btn-primary">Добавить в друзья</button>
+              <button class="btn btn-primary d-none" data-action="addFriend">Добавить в друзья</button>
 
-              <button class="btn btn-info">Убрать заявку в друзья</button>
+              <button class="btn btn-info d-none" data-action="removeRequest">Убрать заявку в друзья</button>
 
-              <button class="btn btn-danger">Удалить из друзей</button>
+              <button class="btn btn-danger d-none" data-action="removeFriend">Удалить из друзей</button>
 
-              <button class="btn btn-primary">Написать сообщение</button>
+              <button class="btn btn-primary d-none" data-action="startChat">Написать сообщение</button>
             </div>
           </div>
           <!-- Портфолио -->
@@ -79,9 +81,13 @@
               placeholder="Leave a comment here"
               id="floatingTextarea2"
               style="height: 100px"
-            ></textarea>
+              data-field="postEditor"
+              disabled
+            >
+На стене могут писать только друзья</textarea
+            >
             <label for="floatingTextarea2">Новая запись на стене</label>
-            <button type="button" class="btn btn-primary">Отправить</button>
+            <button type="button" class="btn btn-primary" data-action="sendPost" disabled>Отправить</button>
           </div>
           <!-- Форма поста -->
 
