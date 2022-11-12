@@ -29,7 +29,7 @@
     <div class="container main-container pt-2">
       <div class="row h-100">
         <!-- Menu -->
-        <div class="col-3">
+        <div class="col-3 invisible" data-segment="menu">
           <div class="list-group">
             <a href="/profile.html" class="list-group-item list-group-item-action" aria-current="true">
               Моя страница
@@ -49,65 +49,28 @@
 
         <!-- Content -->
         <div class="col-9 h-100 d-flex flex-column pb-3">
-          <h3>Заявки в друзья:</h3>
-          <div class="d-flex flex-row justify-content-start flex-wrap overflow-auto">
-            <!-- Карточка друга -->
-            <a href="/profile.html" class="friend-card">
-              <img class="friend-card__avatar" src="sets/hair-style-street-fashion-beautiful-girl.jpg" alt="" />
-              <span>Оксана Беляева</span>
-            </a>
-            <!-- Карточка друга -->
+          <h3 data-segment="requests" data-type="header" class="d-none">Заявки в друзья:</h3>
+          <div class="d-flex flex-row justify-content-start flex-wrap overflow-auto" data-segment="requests" data-type="list"></div>
 
-            <!-- Карточка друга -->
-            <a href="/profile.html" class="friend-card">
-              <img class="friend-card__avatar" src="sets/portrait-of-cheerful-caucasian-man.jpg" alt="" />
-              <span>Максим Оклахомов</span>
-            </a>
-            <!-- Карточка друга -->
-
-            <!-- Карточка друга -->
-            <a href="/profile.html" class="friend-card">
-              <img
-                class="friend-card__avatar"
-                src="sets/pretty-smiling-joyfully-female-with-fair-hair-dressed-casually-looking-with-satisfaction_176420-15187.png"
-                alt=""
-              />
-              <span>Диана Персикова</span>
-            </a>
-            <!-- Карточка друга -->
-          </div>
-          <h3>Друзья:</h3>
-          <div class="d-flex flex-row justify-content-start flex-wrap overflow-auto">
-            <!-- Карточка друга -->
-            <a href="/profile.html" class="friend-card">
-              <img class="friend-card__avatar" src="sets/hair-style-street-fashion-beautiful-girl.jpg" alt="" />
-              <span>Оксана Беляева</span>
-            </a>
-            <!-- Карточка друга -->
-
-            <!-- Карточка друга -->
-            <a href="/profile.html" class="friend-card">
-              <img class="friend-card__avatar" src="sets/portrait-of-cheerful-caucasian-man.jpg" alt="" />
-              <span>Максим Оклахомов</span>
-            </a>
-            <!-- Карточка друга -->
-
-            <!-- Карточка друга -->
-            <a href="/profile.html" class="friend-card">
-              <img
-                class="friend-card__avatar"
-                src="sets/pretty-smiling-joyfully-female-with-fair-hair-dressed-casually-looking-with-satisfaction_176420-15187.png"
-                alt=""
-              />
-              <span>Диана Персикова</span>
-            </a>
-            <!-- Карточка друга -->
-          </div>
+          <h3 data-segment="friends" data-type="header">Друзья:</h3>
+          <div class="d-flex flex-row justify-content-start flex-wrap overflow-auto" data-segment="friends" data-type="list"></div>
         </div>
         <!-- Content -->
       </div>
     </div>
     <!-- Main Conteiner -->
+
+    <template data-template="friendCard">
+      <a href="/profile.html" class="friend-card" data-field="link">
+        <img
+          class="friend-card__avatar"
+          src="sets/hair-style-street-fashion-beautiful-girl.jpg"
+          alt=""
+          data-field="avatar"
+        />
+        <span data-field="name">Оксана Беляева</span>
+      </a>
+    </template>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
