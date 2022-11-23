@@ -38,7 +38,6 @@ async function init() {
 
     if (res.ok) {
       const data = await res.json();
-      console.log({ data });
       requests = data.requests;
       friends = data.friends;
       return;
