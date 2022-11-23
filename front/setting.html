@@ -29,7 +29,7 @@
     <div class="container main-container pt-2">
       <div class="row h-100">
         <!-- Menu -->
-        <div class="col-3">
+        <div class="col-3 invisible" data-segment="menu">
           <div class="list-group">
             <a href="/profile.html" class="list-group-item list-group-item-action" aria-current="true">
               Моя страница
@@ -50,7 +50,7 @@
         <!-- Content -->
         <div class="col-9 h-100 d-flex flex-column pb-3">
           <!-- Табы -->
-          <div>
+          <div data-segment="select">
             <ul class="nav nav-tabs mb-3">
               <li class="nav-item">
                 <button class="nav-link">Почта</button>
@@ -76,12 +76,12 @@
           <!-- Табы -->
 
           <!-- Смена почты -->
-          <form class="d-none">
+          <form data-tab="email">
             <h3>Сменить почту</h3>
             <!-- Email -->
-            <div class="input-group has-validation mb-3">
+            <div class="input-group has-validation mb-3" data-segment="email">
               <!-- Добавить is-valid / is-invalid -->
-              <div class="form-floating">
+              <div class="form-floating" data-field="wrapper">
                 <!-- Добавить is-valid / is-invalid -->
                 <input type="email" class="form-control" id="emailField" placeholder="Username" required />
                 <label for="emailField">Email</label>
@@ -91,17 +91,17 @@
             </div>
             <!-- Email -->
 
-            <button type="button" class="btn btn-primary w-100">Сохранить</button>
+            <button type="button" class="btn btn-primary w-100" data-action="save">Сохранить</button>
           </form>
           <!-- Смена почты -->
 
           <!-- Смена имени -->
-          <form class="d-none">
+          <form class="d-none" data-tab="name">
             <h3>Сменить имя, фамилию</h3>
             <!-- Name -->
-            <div class="input-group has-validation mb-3">
+            <div class="input-group has-validation mb-3" data-segment="name">
               <!-- Добавить is-valid / is-invalid -->
-              <div class="form-floating">
+              <div class="form-floating" data-field="wrapper">
                 <!-- Добавить is-valid / is-invalid -->
                 <input type="text" class="form-control" id="nameField" placeholder="Username" required />
                 <label for="nameField">Имя</label>
@@ -112,9 +112,9 @@
             <!-- Name -->
 
             <!-- Surname -->
-            <div class="input-group has-validation mb-3">
+            <div class="input-group has-validation mb-3" data-segment="surname">
               <!-- Добавить is-valid / is-invalid -->
-              <div class="form-floating">
+              <div class="form-floating" data-field="wrapper">
                 <!-- Добавить is-valid / is-invalid -->
                 <input type="text" class="form-control" id="surnameField" placeholder="Username" required />
                 <label for="surnameField">Фамилия</label>
@@ -124,18 +124,18 @@
             </div>
             <!-- Surname -->
 
-            <button type="button" class="btn btn-primary w-100">Сохранить</button>
+            <button type="button" class="btn btn-primary w-100" data-action="save">Сохранить</button>
           </form>
           <!-- Смена имени -->
 
           <!-- Смена пароля -->
-          <form class="d-none">
+          <form class="d-none" data-tab="password">
             <h3>Сменить Пароль</h3>
 
             <!-- Password -->
-            <div class="input-group has-validation mb-3">
+            <div class="input-group has-validation mb-3" data-segment="password">
               <!-- Добавить is-valid / is-invalid -->
-              <div class="form-floating">
+              <div class="form-floating" data-field="wrapper">
                 <!-- Добавить is-valid / is-invalid -->
                 <input type="password" class="form-control" id="passwordField" placeholder="Username" required />
                 <label for="passwordField">Пароль</label>
@@ -146,9 +146,9 @@
             <!-- Password -->
 
             <!-- Password cofirm -->
-            <div class="input-group has-validation mb-3">
+            <div class="input-group has-validation mb-3" data-segment="confirmPassword">
               <!-- Добавить is-valid / is-invalid -->
-              <div class="form-floating">
+              <div class="form-floating" data-field="wrapper">
                 <!-- Добавить is-valid / is-invalid -->
                 <input type="password" class="form-control" id="confirmField" placeholder="Username" required />
                 <label for="confirmField">Повторите пароль</label>
@@ -156,16 +156,16 @@
               <div class="invalid-feedback">Не совпадает с паролем</div>
             </div>
             <!-- Password cofirm -->
-            <button type="button" class="btn btn-primary w-100">Сохранить</button>
+            <button type="button" class="btn btn-primary w-100" data-action="save">Сохранить</button>
           </form>
           <!-- Смена пароля -->
 
           <!-- Смена аватара -->
-          <form class="d-none">
+          <form class="d-none" data-tab="avatar">
             <h3>Сменить аватара</h3>
-            <div class="input-group has-validation mb-3">
+            <div class="input-group has-validation mb-3" data-segment="avatar">
               <!-- Добавить is-valid / is-invalid -->
-              <div class="form-floating">
+              <div class="form-floating" data-field="wrapper">
                 <!-- Добавить is-valid / is-invalid -->
                 <input
                   id="avatarField"
@@ -179,16 +179,16 @@
               <div class="invalid-feedback"></div>
               <div class="valid-feedback"></div>
             </div>
-            <button type="button" class="btn btn-primary w-100">Сохранить</button>
+            <button type="button" class="btn btn-primary w-100" data-action="save">Сохранить</button>
           </form>
           <!-- Смена аватара -->
 
           <!-- Смена статуса -->
-          <form>
+          <form class="d-none" data-tab="status">
             <h3>Сменить статуса</h3>
-            <div class="input-group has-validation mb-3">
+            <div class="input-group has-validation mb-3" data-segment="status">
               <!-- Добавить is-valid / is-invalid -->
-              <div class="form-floating">
+              <div class="form-floating" data-field="wrapper">
                 <!-- Добавить is-valid / is-invalid -->
                 <input type="text" class="form-control" id="statusField" placeholder="Username" required />
                 <label for="statusField">Статус</label>
@@ -196,7 +196,7 @@
               <div class="invalid-feedback"></div>
               <div class="valid-feedback"></div>
             </div>
-            <button type="button" class="btn btn-primary w-100">Сохранить</button>
+            <button type="button" class="btn btn-primary w-100" data-action="save">Сохранить</button>
           </form>
           <!-- Смена статуса -->
         </div>

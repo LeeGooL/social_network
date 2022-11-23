@@ -1,10 +1,10 @@
 import {
-  validateEmail,
-  getDataFromIGroup,
   errorValidation,
-  successfulValidation,
-  session,
+  getDataFromIGroup,
   removeClass,
+  session,
+  successfulValidation,
+  validateEmail,
 } from '../util.js';
 
 const igroupEmail = document.querySelector('[data-igroup="email"]');
@@ -58,8 +58,6 @@ function validation() {
 async function registration({ result }) {
   for (const item of items) {
     const { field, input, wrapper } = getDataFromIGroup(item);
-
-    console.log({ field, input, wrapper });
 
     removeClass([input, wrapper], 'is-valid');
 

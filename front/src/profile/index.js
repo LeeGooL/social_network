@@ -1,6 +1,6 @@
-import { addClass, dateFormatter, getProfile, removeClass, session } from '../util.js';
 import '../initExit.js';
 import '../initMenu.js';
+import { addClass, dateFormatter, getProfile, removeClass, session } from '../util.js';
 
 const postTemplate = document.querySelector('template[data-template="post"]');
 
@@ -51,9 +51,7 @@ function initProfile() {
     } else if (fieldName === 'avatar') {
       field.src = userField.img;
     } else if (fieldName === 'postEditor') {
-      console.log({ field });
       field.addEventListener('input', (e) => {
-        console.log('value', e.target.value);
         if (!e.target.value.trim().length) {
           sentPostButton.disabled = true;
         } else {
@@ -311,10 +309,6 @@ function startEditorPost(e) {
   const post = e.target.closest('[data-post-id]');
   const postId = parseInt(post.dataset.postId, 10);
   const postContentInfo = user.posts.find((el) => el.id === postId).content;
-
-  console.log({ user });
-
-  console.log({ postContentInfo });
 
   const postActions = post.querySelector('[data-segment="actions"]');
   const postEditorSegment = post.querySelector('[data-segment="editor"]');
