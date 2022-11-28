@@ -1,6 +1,9 @@
-import { session, getProfile, removeClass, addClass } from './util.js';
+import { io } from 'https://cdn.socket.io/4.5.4/socket.io.esm.min.js';
+import { addClass, getProfile, removeClass, session } from './util.js';
 
 const menu = document.querySelector('[data-segment="menu"]');
+
+let socket = null;
 
 main();
 
@@ -32,7 +35,7 @@ async function initMenu(user) {
 
   const params = new URLSearchParams(location.search);
 
-  if (params.has('userId')) {
+  if (params.has('userId') && location.pathname.includes('profile')) {
     const newUser = await getProfile(params.get('userId'));
 
     if (newUser.user.id !== user.id) {
@@ -45,4 +48,19 @@ async function initMenu(user) {
       addClass(menuItem, 'active');
     }
   }
+
+  socket = new io({ path: '/api/notification' });
+  socket.on('status', handler);
+}
+
+function handler(flag) {
+  const notificationIcon = menu.querySelector('[data-field="notification"]');
+
+  if (flag) {
+    removeClass(notificationIcon, 'd-none');
+  }
+}
+
+export function read(messageId) {
+  socket.emit('status', messageId, handler);
 }

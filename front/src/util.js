@@ -7,6 +7,7 @@ export const dateFormatter = new Intl.DateTimeFormat('ru-RU', {
   year: 'numeric',
   hour: '2-digit',
   minute: '2-digit',
+  second: '2-digit',
 });
 
 const errorClass = 'is-invalid';
